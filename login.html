@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | ResolveDesk Grievance Portal</title>
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5.3 CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Custom Modern CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light">
+
+  <!-- ================= Navigation Bar ================= -->
+  <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <div class="brand-icon">
+          <i class="bi bi-shield-check"></i>
+        </div>
+        <span>Resolve<span class="text-primary-custom">Desk</span></span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav me-auto ms-lg-4">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="complaints.html">Grievance Registry</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About & OOP Guide</a></li>
+        </ul>
+        <div>
+          <a href="register.html" class="btn btn-outline-custom btn-sm">File Grievance Account</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= Login Card Section ================= -->
+  <div class="container py-5 my-auto">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-5">
+        
+        <div class="text-center mb-4">
+          <span class="oop-badge mb-2"><i class="bi bi-shield-lock-fill"></i> Authentication & Inheritance</span>
+          <h2 class="fw-bold text-dark">Grievance Portal Access</h2>
+          <p class="text-muted fs-7">Select user subclass role and authenticate session</p>
+        </div>
+
+        <div class="card card-custom p-4 p-md-5 shadow-sm">
+          
+          <!-- Role Selection (Demonstrating Inheritance: User -> Admin / Officer / Complainant) -->
+          <div class="mb-4">
+            <label class="form-label text-muted fs-8 text-uppercase fw-bold">Select Subclass / Role</label>
+            <div class="btn-group w-100" role="group">
+              <input type="radio" class="btn-check" name="userRole" id="roleAdmin" value="ADMIN" checked autocomplete="off">
+              <label class="btn btn-outline-primary py-2 fs-8 fw-semibold" for="roleAdmin">
+                AdminUser
+              </label>
+
+              <input type="radio" class="btn-check" name="userRole" id="roleOfficer" value="OFFICER" autocomplete="off">
+              <label class="btn btn-outline-primary py-2 fs-8 fw-semibold" for="roleOfficer">
+                SupportOfficer
+              </label>
+
+              <input type="radio" class="btn-check" name="userRole" id="roleComplainant" value="COMPLAINANT" autocomplete="off">
+              <label class="btn btn-outline-primary py-2 fs-8 fw-semibold" for="roleComplainant">
+                Complainant
+              </label>
+            </div>
+            <div id="roleDescriptionText" class="form-text fs-8 mt-2 text-secondary">
+              <strong>SystemAdminUser</strong> (Subclass of User): Full system authority, department routing, and audit logs.
+            </div>
+          </div>
+
+          <form id="loginForm" novalidate>
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="loginEmail" class="form-label">Email Address</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-end-0"><i class="bi bi-envelope"></i></span>
+                <input type="email" class="form-control border-start-0" id="loginEmail" placeholder="admin@college.edu" value="admin@college.edu" required>
+                <div class="invalid-feedback">Please enter a valid email address.</div>
+              </div>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <label for="loginPassword" class="form-label mb-0">Password</label>
+                <a href="#" class="fs-8 text-decoration-none text-primary" onclick="showToast('PasswordRecoveryService', 'Password reset instructions dispatched to your email.', 'info'); return false;">Forgot?</a>
+              </div>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-end-0"><i class="bi bi-key"></i></span>
+                <input type="password" class="form-control border-start-0" id="loginPassword" placeholder="Enter password" value="admin123" required minlength="6">
+                <div class="invalid-feedback">Password must be at least 6 characters.</div>
+              </div>
+            </div>
+
+            <!-- Remember me -->
+            <div class="d-flex justify-content-between align-items-center mb-4 fs-7">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="rememberMe" checked>
+                <label class="form-check-label text-muted" for="rememberMe">Remember session token</label>
+              </div>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-primary-custom w-100 py-2.5 justify-content-center" data-oop-event="UserLoginSubmitted">
+              <i class="bi bi-box-arrow-in-right"></i> Sign In to ResolveDesk
+            </button>
+          </form>
+
+          <!-- Viva Testing Credentials Helper -->
+          <div class="mt-4 p-3 bg-light rounded border border-light-subtle">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <small class="fw-bold text-dark fs-8"><i class="bi bi-lightning-charge-fill text-warning me-1"></i> Viva Quick-Fill Role Profiles:</small>
+            </div>
+            <div class="d-flex gap-2">
+              <button type="button" class="btn btn-xs btn-outline-secondary w-50 fs-8 py-1" onclick="document.getElementById('roleAdmin').checked=true; document.getElementById('loginEmail').value='admin@college.edu'; document.getElementById('loginPassword').value='admin123'; showToast('Credentials Set', 'Selected SystemAdminUser credentials', 'info');">
+                Admin
+              </button>
+              <button type="button" class="btn btn-xs btn-outline-secondary w-50 fs-8 py-1" onclick="document.getElementById('roleOfficer').checked=true; document.getElementById('loginEmail').value='officer.raman@college.edu'; document.getElementById('loginPassword').value='officer123'; showToast('Credentials Set', 'Selected SupportOfficerUser credentials', 'info');">
+                Officer
+              </button>
+              <button type="button" class="btn btn-xs btn-outline-secondary w-50 fs-8 py-1" onclick="document.getElementById('roleComplainant').checked=true; document.getElementById('loginEmail').value='aarav.sharma@college.edu'; document.getElementById('loginPassword').value='student123'; showToast('Credentials Set', 'Selected ComplainantUser credentials', 'info');">
+                Citizen
+              </button>
+            </div>
+            <div class="mt-2 text-muted fs-8">
+              Tip: Enter password <code>wrongpassword</code> to test Java <code>BadCredentialsException</code>!
+            </div>
+          </div>
+
+          <div class="text-center mt-4 fs-7 text-muted">
+            New complainant? <a href="register.html" class="fw-semibold text-primary-custom text-decoration-none">Register Account</a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 9999;"></div>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grievance Registry | ResolveDesk OOP Mini Project</title>
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5.3 CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Custom Modern CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ================= Navigation Bar ================= -->
+  <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <div class="brand-icon">
+          <i class="bi bi-shield-check"></i>
+        </div>
+        <span>Resolve<span class="text-primary-custom">Desk</span></span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav me-auto ms-lg-4">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link active" href="complaints.html">Grievance Registry</a></li>
+          <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About & OOP Guide</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2">
+          <a href="login.html" class="btn btn-outline-danger btn-sm" title="Log Out">
+            <i class="bi bi-box-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= Main Registry View ================= -->
+  <main class="py-4">
+    <div class="container">
+      
+      <!-- Page Header & Metrics Summary -->
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4 pb-2 border-bottom">
+        <div>
+          <span class="oop-badge mb-1"><i class="bi bi-collection-fill"></i> Collections & File Handling</span>
+          <h2 class="fw-bold text-dark mb-0">Central Grievance & Ticket Registry</h2>
+          <p class="text-muted fs-7 mb-0">Manage lodged complaints, update investigation status, import CSV datasets, and download audit reports.</p>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2">
+          <!-- Hidden CSV File Input for Import -->
+          <input type="file" id="importCsvInput" accept=".csv" class="d-none">
+          
+          <button type="button" class="btn btn-outline-secondary btn-sm" onclick="document.getElementById('importCsvInput').click();" title="File Handling: Import CSV">
+            <i class="bi bi-file-earmark-arrow-up text-primary"></i> Import CSV
+          </button>
+          
+          <button type="button" class="btn btn-outline-secondary btn-sm" id="exportCsvBtn" title="File Handling: Export CSV">
+            <i class="bi bi-file-earmark-arrow-down text-success"></i> Export CSV
+          </button>
+
+          <button type="button" class="btn btn-primary-custom btn-sm" onclick="openAddComplaintModal();">
+            <i class="bi bi-plus-circle-fill"></i> File New Grievance
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Summary Cards -->
+      <div class="row g-3 mb-4">
+        <div class="col-sm-3">
+          <div class="p-3 bg-white rounded border d-flex align-items-center justify-content-between">
+            <div>
+              <span class="text-muted fs-8 text-uppercase fw-bold">Total In Registry</span>
+              <h4 class="mb-0 fw-bold text-dark" id="metricTotalComplaints">0</h4>
+            </div>
+            <span class="badge bg-primary-subtle text-primary p-2 fs-6"><i class="bi bi-folder2-open"></i></span>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="p-3 bg-white rounded border d-flex align-items-center justify-content-between">
+            <div>
+              <span class="text-muted fs-8 text-uppercase fw-bold">Pending Review</span>
+              <h4 class="mb-0 fw-bold text-warning" id="metricPendingComplaints">0</h4>
+            </div>
+            <span class="badge bg-warning-subtle text-warning p-2 fs-6"><i class="bi bi-hourglass-top"></i></span>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="p-3 bg-white rounded border d-flex align-items-center justify-content-between">
+            <div>
+              <span class="text-muted fs-8 text-uppercase fw-bold">In Progress</span>
+              <h4 class="mb-0 fw-bold text-info" id="metricInProgressComplaints">0</h4>
+            </div>
+            <span class="badge bg-info-subtle text-info p-2 fs-6"><i class="bi bi-tools"></i></span>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="p-3 bg-white rounded border d-flex align-items-center justify-content-between">
+            <div>
+              <span class="text-muted fs-8 text-uppercase fw-bold">Resolved & Closed</span>
+              <h4 class="mb-0 fw-bold text-success" id="metricResolvedComplaints">0</h4>
+            </div>
+            <span class="badge bg-success-subtle text-success p-2 fs-6"><i class="bi bi-check-all"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search & Filtering Toolbar -->
+      <div class="card card-custom mb-4 p-3 bg-white">
+        <div class="row g-2 align-items-center">
+          
+          <!-- Search Input -->
+          <div class="col-md-4">
+            <div class="input-group input-group-sm">
+              <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-muted"></i></span>
+              <input type="text" class="form-control border-start-0" id="searchComplaintInput" placeholder="Search by Ticket ID, Title, or Complainant...">
+            </div>
+          </div>
+
+          <!-- Category Filter -->
+          <div class="col-md-3">
+            <select class="form-select form-select-sm" id="filterCategory">
+              <option value="">All Categories</option>
+              <option value="IT & Network">IT & Network</option>
+              <option value="Hostel & Infrastructure">Hostel & Infrastructure</option>
+              <option value="Academic & Grading">Academic & Grading</option>
+              <option value="Laboratory Equipment">Laboratory Equipment</option>
+              <option value="Administrative & Accounts">Administrative & Accounts</option>
+            </select>
+          </div>
+
+          <!-- Priority Filter -->
+          <div class="col-md-2">
+            <select class="form-select form-select-sm" id="filterPriority">
+              <option value="">All Priorities</option>
+              <option value="Critical">Critical</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </div>
+
+          <!-- Status Filter -->
+          <div class="col-md-3">
+            <div class="input-group input-group-sm">
+              <span class="input-group-text bg-light"><i class="bi bi-filter"></i></span>
+              <select class="form-select form-select-sm" id="filterStatus">
+                <option value="">All Statuses</option>
+                <option value="Open">Open</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Resolved">Resolved</option>
+                <option value="Escalated">Escalated</option>
+                <option value="Closed">Closed</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Main Complaints Table Card -->
+      <div class="card card-custom overflow-hidden">
+        <div class="card-header card-header-clean d-flex justify-content-between align-items-center bg-white">
+          <div class="d-flex align-items-center gap-2">
+            <h5 class="fw-bold mb-0 text-dark">Grievance Ticket Registry</h5>
+            <span class="badge bg-light text-secondary border font-monospace" id="complaintResultCount">0 Tickets</span>
+          </div>
+          <div class="fs-8 text-muted d-none d-md-block">
+            <i class="bi bi-info-circle me-1"></i> Backed by <code>java.util.List&lt;Complaint&gt;</code> & <code>PriorityQueue</code>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-custom table-hover align-middle mb-0">
+            <thead>
+              <tr>
+                <th style="width: 120px;">Ticket ID</th>
+                <th>Grievance Summary</th>
+                <th>Complainant</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Assigned Unit</th>
+                <th class="text-end" style="width: 130px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="complaintsTableBody">
+              <!-- Populated dynamically by js/complaints.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Empty State Alert -->
+        <div id="emptyState" class="text-center py-5 d-none">
+          <div class="stat-icon info mx-auto mb-3" style="width: 60px; height: 60px; font-size: 1.8rem;">
+            <i class="bi bi-search"></i>
+          </div>
+          <h5 class="fw-bold text-dark">No Grievance Tickets Found</h5>
+          <p class="text-muted fs-7 mb-3">No complaints match your search query or the collection is currently empty.</p>
+          <button class="btn btn-outline-custom btn-sm" onclick="document.getElementById('searchComplaintInput').value=''; document.getElementById('filterCategory').value=''; document.getElementById('filterPriority').value=''; document.getElementById('filterStatus').value=''; loadComplaints();">
+            Reset All Filters
+          </button>
+        </div>
+
+        <!-- Card Footer -->
+        <div class="card-footer bg-white border-top p-3 d-flex flex-wrap justify-content-between align-items-center fs-8 text-muted">
+          <div>
+            Showing grievance tickets stored in client-side collection
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <span>CSV File Handling Enabled</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= Add Grievance Modal ================= -->
+  <div class="modal fade" id="addComplaintModal" tabindex="-1" aria-labelledby="addComplaintTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header bg-light border-bottom">
+          <h5 class="modal-title fw-bold text-dark" id="addComplaintTitle">
+            <i class="bi bi-file-earmark-plus-fill text-primary me-2"></i>File New Grievance Ticket
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        
+        <form id="addComplaintForm" novalidate>
+          <div class="modal-body p-4">
+            <div class="row g-3">
+              
+              <!-- Ticket ID (Generated) -->
+              <div class="col-md-4">
+                <label for="newComplaintId" class="form-label">Ticket ID (Immutable Key)</label>
+                <input type="text" class="form-control font-monospace bg-light" id="newComplaintId" readonly required>
+              </div>
+
+              <!-- Category -->
+              <div class="col-md-4">
+                <label for="newCategory" class="form-label">Category <span class="text-danger">*</span></label>
+                <select class="form-select" id="newCategory" required>
+                  <option value="" disabled selected>Select Category</option>
+                  <option value="IT & Network">IT & Network</option>
+                  <option value="Hostel & Infrastructure">Hostel & Infrastructure</option>
+                  <option value="Academic & Grading">Academic & Grading</option>
+                  <option value="Laboratory Equipment">Laboratory Equipment</option>
+                  <option value="Administrative & Accounts">Administrative & Accounts</option>
+                </select>
+                <div class="invalid-feedback">Please select a grievance category.</div>
+              </div>
+
+              <!-- Priority -->
+              <div class="col-md-4">
+                <label for="newPriority" class="form-label">Severity Priority <span class="text-danger">*</span></label>
+                <select class="form-select" id="newPriority" required>
+                  <option value="Low">Low (SLA: 120 Hours)</option>
+                  <option value="Medium" selected>Medium (SLA: 72 Hours)</option>
+                  <option value="High">High (SLA: 48 Hours)</option>
+                  <option value="Critical">Critical (SLA: 24 Hours)</option>
+                </select>
+              </div>
+
+              <!-- Title -->
+              <div class="col-12">
+                <label for="newTitle" class="form-label">Grievance Subject / Title <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="newTitle" placeholder="e.g. Projector lamp blown in Lecture Hall 2" required minlength="5">
+                <div class="invalid-feedback">A brief title of at least 5 characters is required.</div>
+              </div>
+
+              <!-- Complainant Name -->
+              <div class="col-md-6">
+                <label for="newComplainantName" class="form-label">Complainant Full Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="newComplainantName" placeholder="e.g. Aarav Sharma" value="Aarav Sharma" required minlength="2">
+              </div>
+
+              <!-- Complainant Email -->
+              <div class="col-md-6">
+                <label for="newComplainantEmail" class="form-label">Email Address (For SLA Notifications) <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="newComplainantEmail" placeholder="aarav.sharma@college.edu" value="aarav.sharma@college.edu" required>
+              </div>
+
+              <!-- Department -->
+              <div class="col-md-6">
+                <label for="newDepartment" class="form-label">Affiliated Department <span class="text-danger">*</span></label>
+                <select class="form-select" id="newDepartment" required>
+                  <option value="Computer Science" selected>Computer Science</option>
+                  <option value="Information Technology">Information Technology</option>
+                  <option value="Electronics & Comm.">Electronics & Comm.</option>
+                  <option value="Mechanical Engineering">Mechanical Engineering</option>
+                  <option value="Hostel Resident">Hostel Resident</option>
+                </select>
+              </div>
+
+              <!-- Attachment (File Handling Simulation) -->
+              <div class="col-md-6">
+                <label for="newEvidenceAttachment" class="form-label">Supporting Evidence / Attachment</label>
+                <input type="file" class="form-control" id="newEvidenceAttachment" accept=".png,.jpg,.jpeg,.pdf,.txt">
+                <small class="text-muted fs-8">Simulates Multipart file streaming</small>
+              </div>
+
+              <!-- Description -->
+              <div class="col-12">
+                <label for="newDescription" class="form-label">Detailed Description of Issue <span class="text-danger">*</span></label>
+                <textarea class="form-control" id="newDescription" rows="3" placeholder="Provide complete facts, location, equipment numbers, and timeline..." required minlength="15">The ceiling projector optical lamp burned out mid-lecture with audible pop sound. Room is currently unusable for multimedia presentations.</textarea>
+                <div class="invalid-feedback">Please enter a detailed description (min 15 characters).</div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="modal-footer bg-light border-top">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary-custom" data-oop-event="GrievanceFiledClicked">
+              <i class="bi bi-send-check-fill"></i> Submit Grievance (Triggers ComplaintFiledEvent)
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= Edit / Update Grievance Status Modal ================= -->
+  <div class="modal fade" id="editComplaintModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header bg-light border-bottom">
+          <h5 class="modal-title fw-bold text-dark"><i class="bi bi-pencil-square text-primary me-2"></i>Update Grievance Status</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        
+        <form id="editComplaintForm">
+          <input type="hidden" id="editComplaintId">
+
+          <div class="modal-body p-4">
+            <div class="mb-3">
+              <span class="fs-8 text-muted">Ticket Subject:</span>
+              <div class="fw-bold text-dark fs-7" id="editComplaintTitleHeader"></div>
+            </div>
+
+            <div class="mb-3">
+              <label for="editStatus" class="form-label">Workflow Status <span class="text-danger">*</span></label>
+              <select class="form-select" id="editStatus" required>
+                <option value="Open">Open</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Escalated">Escalated</option>
+                <option value="Resolved">Resolved</option>
+                <option value="Closed">Closed</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="editAssignedTo" class="form-label">Assigned Investigation Officer / Team</label>
+              <input type="text" class="form-control" id="editAssignedTo" placeholder="e.g. Electrical Maintenance Cell">
+            </div>
+
+            <div class="mb-3">
+              <label for="editResolutionNotes" class="form-label">Investigation & Action Taken Notes</label>
+              <textarea class="form-control" id="editResolutionNotes" rows="3" placeholder="Enter findings, parts replaced, or corrective measures taken..."></textarea>
+              <small class="text-muted fs-8">Required when setting status to Resolved or Closed.</small>
+            </div>
+          </div>
+
+          <div class="modal-footer bg-light border-top">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary-custom" data-oop-event="ComplaintStatusUpdated">
+              <i class="bi bi-check-lg"></i> Update Ticket Status
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= View Encapsulated Ticket Details Modal ================= -->
+  <div class="modal fade" id="viewDetailsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header bg-light border-bottom">
+          <h5 class="modal-title fw-bold text-dark"><i class="bi bi-shield-lock-fill text-primary me-2"></i>Encapsulated Grievance Entity</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4" id="viewDetailsContent">
+          <!-- Populated by viewComplaintDetails() -->
+        </div>
+        <div class="modal-footer bg-light border-top">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= Delete Confirmation Modal ================= -->
+  <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content border-0 shadow-lg text-center p-3">
+        <div class="modal-body">
+          <div class="stat-icon danger mx-auto mb-3" style="width: 54px; height: 54px; font-size: 1.5rem;">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+          </div>
+          <h5 class="fw-bold text-dark mb-1">Confirm Deletion</h5>
+          <p class="text-muted fs-7 mb-3">
+            Are you sure you want to remove <span id="deleteTargetName" class="fw-bold text-dark">this grievance</span>? This purges the entity from the collection.
+          </p>
+          <div class="d-flex gap-2 justify-content-center">
+            <button type="button" class="btn btn-outline-secondary btn-sm px-3" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-danger btn-sm px-3" onclick="executeDeleteStudent();" data-oop-event="ConfirmComplaintDeleted">
+              Delete Ticket
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 9999;"></div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container text-center text-muted fs-8">
+      ResolveDesk Grievance & Complaint Resolution System &bull; Java OOP Mini Project Architecture
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="js/main.js"></script>
+  <script src="js/complaints.js"></script>
+</body>
+</html>

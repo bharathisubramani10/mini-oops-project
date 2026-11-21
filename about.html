@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About & OOP Viva Guide | ResolveDesk Mini Project</title>
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5.3 CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Custom Modern CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ================= Navigation Bar ================= -->
+  <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <div class="brand-icon">
+          <i class="bi bi-shield-check"></i>
+        </div>
+        <span>Resolve<span class="text-primary-custom">Desk</span></span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav me-auto ms-lg-4">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="complaints.html">Grievance Registry</a></li>
+          <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">About & OOP Guide</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2">
+          <a href="login.html" class="btn btn-outline-custom btn-sm">Sign In</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= Header ================= -->
+  <header class="py-5 bg-white border-bottom">
+    <div class="container text-center max-w-800 mx-auto">
+      <span class="oop-badge mb-2"><i class="bi bi-mortarboard-fill"></i> Academic Project Documentation</span>
+      <h1 class="display-5 fw-bold text-dark">Complaint Resolution System: OOP Architecture Guide</h1>
+      <p class="lead text-muted fs-6 mb-4">
+        A structured cross-reference connecting every functional module of ResolveDesk to backend Java Object-Oriented Programming (OOP) concepts, designed for college project report documentation and viva voce defense.
+      </p>
+      <div class="d-flex flex-wrap justify-content-center gap-2">
+        <a href="#oopConcepts" class="btn btn-primary-custom btn-sm"><i class="bi bi-code-slash"></i> 10 OOP Concepts</a>
+        <a href="#packageStructure" class="btn btn-outline-secondary btn-sm"><i class="bi bi-folder2-open"></i> Package Structure</a>
+        <a href="#vivaQuestions" class="btn btn-outline-secondary btn-sm"><i class="bi bi-chat-left-dots"></i> Top Viva Questions</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= Main Body ================= -->
+  <main class="py-5">
+    <div class="container">
+      
+      <!-- Section 1: Problem Statement & Objectives -->
+      <section class="mb-5">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-6">
+            <h3 class="fw-bold text-dark mb-3">Problem Statement & Objectives</h3>
+            <p class="text-secondary fs-7">
+              In institutions, universities, and organizations, informal grievance handling (verbal complaints, physical letters, unmonitored emails) results in lost issues, lack of accountability, missed Service Level Agreements (SLAs), and zero visibility for complainants.
+            </p>
+            <p class="text-secondary fs-7">
+              <strong>ResolveDesk</strong> solves this by centralizing complaint lodging, automated ticket dispatching, background SLA watchdog timers, and polymorphic escalation rules to ensure transparent, auditable redressal.
+            </p>
+            <ul class="text-secondary fs-7 ps-3">
+              <li class="mb-1"><strong>Multi-Category Registry:</strong> IT, Infrastructure, Academic, Laboratory, and Administration.</li>
+              <li class="mb-1"><strong>SLA & Priority Queue:</strong> Automated urgency ranking (Critical tickets served first).</li>
+              <li class="mb-1"><strong>Polymorphic Escalation:</strong> Automated reassignment when deadlines approach.</li>
+              <li class="mb-1"><strong>File I/O Stream Audit:</strong> CSV dataset export and batch ticket import.</li>
+            </ul>
+          </div>
+          <div class="col-lg-6">
+            <div class="card card-custom p-4 bg-light border">
+              <h6 class="fw-bold text-dark mb-3"><i class="bi bi-diagram-3 text-primary me-2"></i>MVC Architecture & Data Flow</h6>
+              <div class="d-flex flex-column gap-2 font-monospace fs-8">
+                <div class="p-2 bg-white rounded border d-flex justify-content-between">
+                  <span class="text-primary fw-bold">1. View Layer (Presentation)</span>
+                  <span class="text-muted">Bootstrap 5, HTML5, JavaScript</span>
+                </div>
+                <div class="text-center text-muted"><i class="bi bi-arrow-down"></i> HTTP JSON / DTO Payloads</div>
+                <div class="p-2 bg-white rounded border d-flex justify-content-between">
+                  <span class="text-success fw-bold">2. Controller Layer (MVC)</span>
+                  <span class="text-muted">ComplaintController, AuthController</span>
+                </div>
+                <div class="text-center text-muted"><i class="bi bi-arrow-down"></i> Contract Interface Delegation</div>
+                <div class="p-2 bg-white rounded border d-flex justify-content-between">
+                  <span class="text-warning fw-bold">3. Business Service Layer</span>
+                  <span class="text-muted">ComplaintServiceImpl, EscalationEngine</span>
+                </div>
+                <div class="text-center text-muted"><i class="bi bi-arrow-down"></i> Concurrency & File Streaming</div>
+                <div class="p-2 bg-white rounded border d-flex justify-content-between">
+                  <span class="text-danger fw-bold">4. Persistence & Daemon Layer</span>
+                  <span class="text-muted">JPA Repository, SLA Watchdog Thread</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: 10 OOP Concepts Mapping (Cards Grid) -->
+      <section id="oopConcepts" class="mb-5 pt-3">
+        <div class="text-center mb-5">
+          <span class="oop-badge mb-2"><i class="bi bi-mortarboard-fill"></i> Core Curriculum</span>
+          <h2 class="display-6 fw-bold">10 Java OOP Concepts in ResolveDesk</h2>
+          <p class="text-muted fs-7">How each theoretical concept operates naturally inside this Complaint Resolution System.</p>
+        </div>
+
+        <div class="row g-4">
+          
+          <!-- 1. Encapsulation -->
+          <div class="col-md-6">
+            <div class="card card-custom concept-card h-100 p-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="fw-bold mb-0">1. Encapsulation</h5>
+                <span class="badge bg-primary-subtle text-primary border border-primary-subtle">Complaint Entity</span>
+              </div>
+              <p class="text-muted fs-7 mb-3">
+                Fields in <code>Complaint</code> (such as <code>id</code>, <code>status</code>, <code>priority</code>, <code>slaDeadline</code>) are declared <code>private</code> (data hiding). State mutations are guarded by validating setters that prevent illegal state transitions (e.g. jumping from <code>OPEN</code> directly to <code>CLOSED</code> without investigation notes).
+              </p>
+              <div class="bg-light p-2 rounded font-monospace fs-8 border">
+                <span class="text-primary">private</span> ComplaintStatus status;<br>
+                <span class="text-primary">public void</span> setStatus(ComplaintStatus next) {<br>
+                &nbsp;&nbsp;<span class="text-danger">if</span> (!isValidTransition(<span class="text-primary">this</span>.status, next))<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-danger">throw new</span> InvalidStatusTransitionException();<br>
+                &nbsp;&nbsp;<span class="text-primary">this</span>.status = next;<br>
+                }
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Inheritance -->
+          <div class="col-md-6">
+            <div class="card card-custom concept-card h-100 p-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="fw-bold mb-0">2. Inheritance</h5>
+                <span class="badge bg-info-subtle text-info border border-info-subtle">BaseEntity & User Roles</span>
+              </div>
+              <p class="text-muted fs-7 mb-3">
+                Entities inherit common audit timestamps (<code>createdAt</code>, <code>updatedAt</code>) from <code>BaseEntity</code>. Parent class <code>User</code> is extended by concrete subclasses: <code>ComplainantUser</code> (lodges issues), <code>SupportOfficerUser</code> (investigates), and <code>SystemAdminUser</code> (configures SLAs).
+              </p>
+              <div class="bg-light p-2 rounded font-monospace fs-8 border">
+                <span class="text-primary">public class</span> Complaint <span class="text-primary">extends</span> BaseEntity { ... }<br>
+                <span class="text-primary">public class</span> ComplainantUser <span class="text-primary">extends</span> User { ... }<br>
+                <span class="text-primary">public class</span> SupportOfficerUser <span class="text-primary">extends</span> User { ... }
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Polymorphism -->
+          <div class="col-md-6">
+            <div class="card card-custom concept-card h-100 p-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="fw-bold mb-0">3. Polymorphism</h5>
+                <span class="badge bg-warning-subtle text-warning border border-warning-subtle">Method Overriding & Overloading</span>
+              </div>
+              <p class="text-muted fs-7 mb-3">
+                <strong>Method Overriding:</strong> Interface <code>EscalationPolicyStrategy</code> defines <code>executeEscalation(Complaint)</code>, overridden differently by <code>TechnicalEscalationStrategy</code>, <code>InfrastructureEscalationStrategy</code>, and <code>AcademicGrievanceStrategy</code>.<br>
+                <strong>Method Overloading:</strong> <code>findComplaints(String id)</code> vs <code>findComplaints(Category cat, Priority prio)</code>.
+              </p>
+              <div class="bg-light p-2 rounded font-monospace fs-8 border">
+                <span class="text-secondary">@Override</span><br>
+                <span class="text-primary">public</span> EscalationResult executeEscalation(Complaint c) {<br>
+                &nbsp;&nbsp;<span class="text-secondary">// Polymorphic SLA window and routing authority</span><br>
+                }
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Interface -->
+          <div class="col-md-6">
+            <div class="card card-custom concept-card h-100 p-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="fw-bold mb-0">4. Interfaces</h5>
+                <span class="badge bg-success-subtle text-success border border-success-subtle">Service & Exporters</span>
+              </div>
+              <p class="text-muted fs-7 mb-3">
+                Decoupled design via contracts: <code>ComplaintService</code> implemented by <code>ComplaintServiceImpl</code>, <code>NotificationChannel</code> implemented by <code>EmailNotifier</code> and <code>SmsNotifier</code>, and <code>ReportExporter</code> for CSV/PDF generation.
+              </p>
+              <div class="bg-light p-2 rounded font-monospace fs-8 border">
+                <span class="text-primary">public interface</span> ComplaintService {<br>
+                &nbsp;&nbsp;ComplaintDto fileComplaint(ComplaintDto dto);<br>
+                &nbsp;&nbsp;ComplaintDto updateStatus(String id, ComplaintStatus status);<br>
+                }
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Exception Handling -->
+          <div class="col-md-6">
+            <div class="card card-custom concept-card h-100 p-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="fw-bold mb-0">5. Exception Handling</h5>
+                <span class="badge bg-danger-subtle text-danger border border-danger-subtle">Custom Exceptions & Advice</span>
+              </div>
+              <p class="text-muted fs-7 mb-3">
+                Custom checked and unchecked domain exceptions: <code>ComplaintNotFoundException</code>, <code>DuplicateTicketException</code>, <code>InvalidStatusTransitionException</code>, and <code>SlaBreachedException</code> handled globally via Spring <code>@ControllerAdvice</code>.
+              </p>
+              <div class="bg-light p-2 rounded font-monospace fs-8 border">
+                <span class="text-secondary">@ControllerAdvice</span><br>
+                <span class="text-primary">public class</span> GlobalExceptionHandler {<br>
+                &nbsp;&nbsp;<span class="text-secondary">@ExceptionHandler</span>(ComplaintNotFoundException.<span class="text-primary">class</span>)<br>
+                &nbsp;&nbsp;<span class="text-primary">public</span> ResponseEntity&lt;?&gt; handleNotFound(...) { ... }<br>
+                }
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. Collections Framework -->
+          <div class="col-md-6">
+            <div class="card card-custom concept-card h-100 p-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="fw-bold mb-0">6. Collections Framework</h5>
+                <span class="badge bg-primary-subtle text-primary border border-primary-subtle">List, Map, Set, PriorityQueue</span>
+              </div>
+              <p class="text-muted fs-7 mb-3">
+                <strong>ArrayList:</strong> Dynamic registry table traversal.<br>
+                <strong>PriorityQueue:</strong> Orders tickets so that <code>Critical</code> severity and nearest SLA deadlines are processed first.<br>
+                <strong>HashMap:</strong> Fast O(1) category count aggregation and in-memory ticket cache.<br>
+                <strong>HashSet:</strong> Unique tracking tags and duplicate checking.
+              </p>
+              <div class="bg-light p-2 rounded font-monospace fs-8 border">
+                PriorityQueue&lt;Complaint&gt; slaQueue = <span class="text-primary">new</span> PriorityQueue&lt;&gt;(<br>
+                &nbsp;&nbsp;Comparator.comparing(Complaint::getSlaDeadline)<br>
+                );
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. File Handling -->
+          <div class="col-md-6">
+            <div class="card card-custom concept-card h-100 p-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="fw-bold mb-0">7. File Handling</h5>
+                <span class="badge bg-warning-subtle text-warning border border-warning-subtle">CSV Streams & Buffer</span>
+              </div>
+              <p class="text-muted fs-7 mb-3">
+                <strong>Import:</strong> Reads CSV datasets with <code>BufferedReader</code> and <code>FileReader</code>, tokenizing fields and saving to database.<br>
+                <strong>Export:</strong> Streams ticket audit logs to disk using <code>BufferedWriter</code> and <code>FileWriter</code> formatted with standard RFC 4180 commas.
+              </p>
+              <div class="bg-light p-2 rounded font-monospace fs-8 border">
+                <span class="text-primary">try</span> (BufferedWriter writer = <span class="text-primary">new</span> BufferedWriter(<span class="text-primary">new</span> FileWriter(file))) {<br>
+                &nbsp;&nbsp;writer.write(<span class="text-success">"TicketID,Title,Priority,Status\n"</span>);<br>
+                &nbsp;&nbsp;...<br>
+                }
+              </div>
+            </div>
+          </div>
+
+          <!-- 8. Threading & Concurrency -->
+          <div class="col-md-6">
+            <div class="card card-custom concept-card h-100 p-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="fw-bold mb-0">8. Real-World Threading</h5>
+                <span class="badge bg-success-subtle text-success border border-success-subtle">SLA Daemon & Runnable</span>
+              </div>
+              <p class="text-muted fs-7 mb-3">
+                Background SLA Watchdog Daemon runs on an <code>ExecutorService</code> or <code>ScheduledExecutorService</code> thread, periodically scanning tickets nearing SLA breach and dispatching alert emails without freezing the main HTTP web thread.
+              </p>
+              <div class="bg-light p-2 rounded font-monospace fs-8 border">
+                ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();<br>
+                scheduler.scheduleAtFixedRate(<span class="text-primary">new</span> SlaWatchdogWorker(), 0, 15, TimeUnit.MINUTES);
+              </div>
+            </div>
+          </div>
+
+          <!-- 9. Logging -->
+          <div class="col-md-6">
+            <div class="card card-custom concept-card h-100 p-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="fw-bold mb-0">9. Logging Framework</h5>
+                <span class="badge bg-info-subtle text-info border border-info-subtle">SLF4J & Logback</span>
+              </div>
+              <p class="text-muted fs-7 mb-3">
+                Enterprise logging via <code>LoggerFactory.getLogger()</code> across <code>INFO</code>, <code>WARN</code>, <code>ERROR</code>, and <code>DEBUG</code> levels with rotating file appenders (e.g. <code>complaints-audit.log</code>) rather than standard <code>System.out.println()</code>.
+              </p>
+              <div class="bg-light p-2 rounded font-monospace fs-8 border">
+                <span class="text-primary">private static final</span> Logger log = LoggerFactory.getLogger(ComplaintService.<span class="text-primary">class</span>);<br>
+                log.warn(<span class="text-warning">"Ticket #{} breached SLA threshold by {} hours"</span>, id, diff);
+              </div>
+            </div>
+          </div>
+
+          <!-- 10. Event Handling -->
+          <div class="col-md-6">
+            <div class="card card-custom concept-card h-100 p-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="fw-bold mb-0">10. Event Handling</h5>
+                <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">Spring ApplicationEvents</span>
+              </div>
+              <p class="text-muted fs-7 mb-3">
+                Decoupled Observer Pattern via Spring Events: <code>ComplaintFiledEvent</code> and <code>ComplaintStatusChangedEvent</code> published by <code>ApplicationEventPublisher</code> and caught asynchronously by <code>@EventListener</code> to send emails and SMS.
+              </p>
+              <div class="bg-light p-2 rounded font-monospace fs-8 border">
+                publisher.publishEvent(<span class="text-primary">new</span> ComplaintFiledEvent(ticket));<br><br>
+                <span class="text-secondary">@EventListener</span><br>
+                <span class="text-primary">public void</span> onComplaintFiled(ComplaintFiledEvent e) { ... }
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Section 3: Package Structure Reference -->
+      <section id="packageStructure" class="mb-5 pt-3">
+        <div class="card card-custom p-4">
+          <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
+            <h4 class="fw-bold mb-0 text-dark"><i class="bi bi-folder-check text-primary me-2"></i>Backend Package Structure</h4>
+            <span class="badge bg-light text-dark border">Spring Boot MVC Compliant</span>
+          </div>
+          <div class="row g-3 fs-7">
+            <div class="col-md-4">
+              <ul class="list-unstyled mb-0 d-flex flex-column gap-1">
+                <li><code class="fw-bold">controller</code> &mdash; ComplaintController, AuthController</li>
+                <li><code class="fw-bold">service</code> &mdash; ComplaintService, NotificationService</li>
+                <li><code class="fw-bold">service.impl</code> &mdash; ComplaintServiceImpl</li>
+                <li><code class="fw-bold">repository</code> &mdash; ComplaintRepository, UserRepository</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <ul class="list-unstyled mb-0 d-flex flex-column gap-1">
+                <li><code class="fw-bold">model</code> &mdash; Complaint, User, BaseEntity</li>
+                <li><code class="fw-bold">dto</code> &mdash; ComplaintDto, TicketStatusUpdateDto</li>
+                <li><code class="fw-bold">config</code> &mdash; AsyncConfig, ThreadPoolConfig</li>
+                <li><code class="fw-bold">exception</code> &mdash; Custom exceptions & GlobalHandler</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <ul class="list-unstyled mb-0 d-flex flex-column gap-1">
+                <li><code class="fw-bold">util</code> &mdash; CsvParser, SlaCalculator</li>
+                <li><code class="fw-bold">logging</code> &mdash; Logback appender & AOP audit</li>
+                <li><code class="fw-bold">event</code> &mdash; ComplaintFiledEvent & Listeners</li>
+                <li><code class="fw-bold">thread</code> &mdash; SlaWatchdogWorker, EmailDispatcher</li>
+                <li><code class="fw-bold">file</code> &mdash; CsvReportExporter, AttachmentStorage</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Top Viva Questions & Model Answers -->
+      <section id="vivaQuestions" class="mb-5 pt-3">
+        <div class="text-center mb-4">
+          <span class="oop-badge mb-2"><i class="bi bi-patch-question-fill"></i> Examination Prep</span>
+          <h2 class="display-6 fw-bold">Common Viva Voce Questions & Answers</h2>
+        </div>
+
+        <div class="accordion shadow-sm" id="vivaAccordion">
+          
+          <div class="accordion-item border-0 mb-2 rounded overflow-hidden">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                Q1: How does a Complaint Resolution System demonstrate Encapsulation?
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#vivaAccordion">
+              <div class="accordion-body fs-7 text-secondary">
+                <strong>Answer:</strong> In the <code>Complaint</code> entity, all fields (<code>id</code>, <code>title</code>, <code>priority</code>, <code>status</code>, <code>slaDeadline</code>) are marked <code>private</code>. The status can never be directly assigned outside the class. The mutator <code>setStatus(nextStatus)</code> verifies that legal state transitions are adhered to (e.g., a ticket cannot be moved to <code>RESOLVED</code> or <code>CLOSED</code> without non-empty investigation notes), throwing an <code>InvalidStatusTransitionException</code> if violated.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item border-0 mb-2 rounded overflow-hidden">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                Q2: Why is PriorityQueue specifically chosen as a Collection here?
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#vivaAccordion">
+              <div class="accordion-body fs-7 text-secondary">
+                <strong>Answer:</strong> Unlike a standard FIFO <code>Queue</code> or <code>ArrayList</code>, a <code>PriorityQueue&lt;Complaint&gt;</code> continuously orders tickets by their urgency severity (Critical &gt; High &gt; Medium &gt; Low) and approaching SLA deadlines. The background dispatch thread can poll the highest urgency ticket in O(log n) time, ensuring critical safety or infrastructure issues are never starved by minor complaints.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item border-0 mb-2 rounded overflow-hidden">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                Q3: Where is Polymorphism used in this system?
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#vivaAccordion">
+              <div class="accordion-body fs-7 text-secondary">
+                <strong>Answer:</strong> Through Interface Polymorphism with <code>EscalationPolicyStrategy</code>. When a ticket nears SLA breach, the escalation engine polymorphically executes <code>executeEscalation(complaint)</code>. Depending on whether the runtime category is Technical, Infrastructure, Academic, or Campus Safety, different concrete strategies calculate the escalation tier, alert the appropriate authority (CTO, Warden, Dean, or Proctor), and adjust the SLA window without coupling code to concrete classes.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item border-0 mb-2 rounded overflow-hidden">
+            <h2 class="accordion-header" id="headingFour">
+              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                Q4: What role does Threading play in the Complaint Resolution process?
+              </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#vivaAccordion">
+              <div class="accordion-body fs-7 text-secondary">
+                <strong>Answer:</strong> Threading is used in two places:
+                <ul>
+                  <li><strong>SLA Watchdog Daemon:</strong> A background thread pool worker (<code>ScheduledExecutorService</code>) regularly scans open tickets, compares current timestamp with <code>slaDeadline</code>, and updates breached statuses.</li>
+                  <li><strong>Asynchronous Email/SMS Dispatch:</strong> Dispatched via Spring <code>@Async</code> / <code>Runnable</code> workers so that when a citizen files a complaint, their browser receives an immediate response without waiting for network email server handshakes.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 9999;"></div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container text-center text-muted fs-8">
+      ResolveDesk Grievance & Complaint Resolution System &bull; Java OOP Mini Project Architecture
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>

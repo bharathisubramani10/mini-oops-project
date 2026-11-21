@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | ResolveDesk Grievance Portal</title>
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5.3 CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Custom Modern CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light">
+
+  <!-- ================= Navigation Bar ================= -->
+  <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <div class="brand-icon">
+          <i class="bi bi-shield-check"></i>
+        </div>
+        <span>Resolve<span class="text-primary-custom">Desk</span></span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav me-auto ms-lg-4">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="complaints.html">Grievance Registry</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About & OOP Guide</a></li>
+        </ul>
+        <div>
+          <a href="login.html" class="btn btn-outline-custom btn-sm">Already Registered? Sign In</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= Registration Form Section ================= -->
+  <div class="container py-5 my-auto">
+    <div class="row justify-content-center">
+      <div class="col-md-9 col-lg-7">
+        
+        <div class="text-center mb-4">
+          <span class="oop-badge mb-2"><i class="bi bi-person-plus-fill"></i> Event Handling & DTO Validation</span>
+          <h2 class="fw-bold text-dark">Register as a Complainant</h2>
+          <p class="text-muted fs-7">Create your Complainant entity to file grievances and track redressal progress</p>
+        </div>
+
+        <div class="card card-custom p-4 p-md-5 shadow-sm">
+          <form id="registerForm" novalidate>
+            
+            <div class="row g-3">
+              <!-- Complainant ID -->
+              <div class="col-md-6">
+                <label for="regIdNumber" class="form-label">Complainant / ID Number <span class="text-danger">*</span></label>
+                <div class="input-group">
+                  <span class="input-group-text bg-light"><i class="bi bi-hash"></i></span>
+                  <input type="text" class="form-control" id="regIdNumber" placeholder="e.g. STU-1011 or EMP-202" value="STU-1011" required minlength="4">
+                  <div class="invalid-feedback">Valid ID is required.</div>
+                </div>
+              </div>
+
+              <!-- Department / Unit -->
+              <div class="col-md-6">
+                <label for="regDepartment" class="form-label">Department / Affiliation <span class="text-danger">*</span></label>
+                <select class="form-select" id="regDepartment" required>
+                  <option value="" disabled>Select Department</option>
+                  <option value="Computer Science" selected>Computer Science</option>
+                  <option value="Information Technology">Information Technology</option>
+                  <option value="Electronics & Comm.">Electronics & Comm.</option>
+                  <option value="Mechanical Engineering">Mechanical Engineering</option>
+                  <option value="Hostel Resident">Hostel Resident</option>
+                </select>
+                <div class="invalid-feedback">Please select an affiliation.</div>
+              </div>
+
+              <!-- Full Name -->
+              <div class="col-md-6">
+                <label for="regFullName" class="form-label">Full Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="regFullName" placeholder="e.g. Rahul Sen" value="Rahul Sen" required minlength="3">
+                <div class="invalid-feedback">Full name is required.</div>
+              </div>
+
+              <!-- Phone -->
+              <div class="col-md-6">
+                <label for="regPhone" class="form-label">Phone Number <span class="text-danger">*</span></label>
+                <input type="tel" class="form-control" id="regPhone" placeholder="+91 98765 00000" value="+91 98765 11111" required>
+                <div class="invalid-feedback">Contact number is required for SMS alerts.</div>
+              </div>
+
+              <!-- Email -->
+              <div class="col-12">
+                <label for="regEmail" class="form-label">Official Email Address <span class="text-danger">*</span></label>
+                <div class="input-group">
+                  <span class="input-group-text bg-light"><i class="bi bi-envelope"></i></span>
+                  <input type="email" class="form-control" id="regEmail" placeholder="rahul.sen@college.edu" value="rahul.sen@college.edu" required>
+                  <div class="invalid-feedback">A valid email address is required.</div>
+                </div>
+              </div>
+
+              <!-- Password -->
+              <div class="col-md-6">
+                <label for="regPassword" class="form-label">Password <span class="text-danger">*</span></label>
+                <input type="password" class="form-control" id="regPassword" placeholder="Minimum 6 characters" value="student123" required minlength="6">
+                <div class="invalid-feedback">Password must be at least 6 characters.</div>
+              </div>
+
+              <!-- Confirm Password -->
+              <div class="col-md-6">
+                <label for="regConfirmPassword" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+                <input type="password" class="form-control" id="regConfirmPassword" placeholder="Re-type password" value="student123" required minlength="6">
+                <div class="invalid-feedback">Passwords must match.</div>
+              </div>
+
+              <!-- Honor Code -->
+              <div class="col-12 mt-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="regHonorCode" required checked>
+                  <label class="form-check-label fs-7 text-secondary" for="regHonorCode">
+                    I certify that all grievances lodged will be authentic and substantiated with accurate factual details.
+                  </label>
+                  <div class="invalid-feedback">You must accept the grievance guidelines.</div>
+                </div>
+              </div>
+
+              <!-- Submit -->
+              <div class="col-12 mt-4">
+                <button type="submit" class="btn btn-primary-custom w-100 py-2.5 justify-content-center" data-oop-event="ComplainantRegistrationSubmitted">
+                  <i class="bi bi-person-check-fill"></i> Complete Registration (Triggers ComplainantRegisteredEvent)
+                </button>
+              </div>
+            </div>
+
+          </form>
+
+          <div class="text-center mt-4 fs-7 text-muted border-top pt-3">
+            Already possess an account? <a href="login.html" class="fw-semibold text-primary-custom text-decoration-none">Sign In Here</a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 9999;"></div>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

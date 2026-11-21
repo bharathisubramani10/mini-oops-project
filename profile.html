@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile | ResolveDesk OOP Mini Project</title>
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5.3 CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Custom Modern CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ================= Navigation Bar ================= -->
+  <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <div class="brand-icon">
+          <i class="bi bi-shield-check"></i>
+        </div>
+        <span>Resolve<span class="text-primary-custom">Desk</span></span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav me-auto ms-lg-4">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="complaints.html">Grievance Registry</a></li>
+          <li class="nav-item"><a class="nav-link active" href="profile.html">Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About & OOP Guide</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2">
+          <a href="login.html" class="btn btn-outline-danger btn-sm" title="Log Out">
+            <i class="bi bi-box-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= Profile Main Content ================= -->
+  <main class="py-4">
+    <div class="container">
+      
+      <!-- Top Header -->
+      <div class="mb-4 pb-2 border-bottom">
+        <span class="oop-badge mb-1"><i class="bi bi-shield-lock-fill"></i> OOP Concept: Encapsulation</span>
+        <h2 class="fw-bold text-dark mb-0">Complainant Profile & Encapsulated State</h2>
+        <p class="text-muted fs-7 mb-0">Demonstrating data hiding, protected instance variables, getter accessors, and validating mutators.</p>
+      </div>
+
+      <div class="row g-4">
+        
+        <!-- Left Column: Profile Card & Encapsulation Mapping -->
+        <div class="col-lg-4">
+          
+          <!-- Avatar Card -->
+          <div class="card card-custom p-4 text-center mb-4">
+            <div class="position-relative d-inline-block mx-auto mb-3">
+              <div class="avatar-lg bg-primary-light text-primary rounded-circle d-flex align-items-center justify-content-center fw-bold fs-2" style="width: 86px; height: 86px;">
+                AS
+              </div>
+              <button class="btn btn-sm btn-primary rounded-circle position-absolute bottom-0 end-0 p-1 shadow" title="Upload ID Proof / Photo (File Handling)" onclick="document.getElementById('avatarFileInput').click();" style="width: 28px; height: 28px;">
+                <i class="bi bi-camera-fill fs-8"></i>
+              </button>
+              <input type="file" id="avatarFileInput" accept="image/*" class="d-none" onchange="showToast('FileUploadedEvent', 'Avatar file stream uploaded to storage partition.', 'success');">
+            </div>
+
+            <h5 class="fw-bold text-dark mb-1" id="profileCardName">Aarav Sharma</h5>
+            <div class="text-muted fs-7 mb-2" id="profileCardEmail">aarav.sharma@college.edu</div>
+            <div class="d-flex justify-content-center gap-2 mb-3">
+              <span class="badge bg-primary-subtle text-primary border border-primary-subtle font-monospace">CMP-1001</span>
+              <span class="badge bg-success-subtle text-success border border-success-subtle">Verified Citizen</span>
+            </div>
+
+            <div class="border-top pt-3 text-start fs-8">
+              <div class="d-flex justify-content-between py-1">
+                <span class="text-muted">Department:</span>
+                <span class="fw-semibold text-dark">Computer Science</span>
+              </div>
+              <div class="d-flex justify-content-between py-1">
+                <span class="text-muted">Active Tickets:</span>
+                <span class="fw-bold text-primary">2 Open</span>
+              </div>
+              <div class="d-flex justify-content-between py-1">
+                <span class="text-muted">Resolved History:</span>
+                <span class="fw-bold text-success">4 Closed</span>
+              </div>
+              <div class="d-flex justify-content-between py-1">
+                <span class="text-muted">Entity Superclass:</span>
+                <span class="code-pill">User.class</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Encapsulation Viva Card -->
+          <div class="card card-custom p-4 bg-light">
+            <h6 class="fw-bold text-dark mb-2"><i class="bi bi-shield-check text-primary me-2"></i>Encapsulation in Grievance Entity</h6>
+            <p class="text-secondary fs-8 mb-2">
+              Every field in <code>Complaint</code> is marked with <code>private</code> access modifier. State transitions are protected by validating mutators:
+            </p>
+            <div class="bg-dark text-light p-2 rounded font-monospace fs-8 mb-2">
+              <span class="text-secondary">// Private encapsulated fields</span><br>
+              <span class="text-info">private</span> String id;<br>
+              <span class="text-info">private</span> PriorityLevel priority;<br>
+              <span class="text-info">private</span> ComplaintStatus status;<br><br>
+              <span class="text-secondary">// Validating Mutator</span><br>
+              <span class="text-info">public void</span> setStatus(ComplaintStatus next) {<br>
+              &nbsp;&nbsp;<span class="text-warning">if</span> (!isValidTransition(<span class="text-info">this</span>.status, next))<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-danger">throw new</span> InvalidStatusTransitionException();<br>
+              &nbsp;&nbsp;<span class="text-info">this</span>.status = next;<br>
+              }
+            </div>
+            <div class="fs-8 text-muted">
+              Getters permit read access while setters ensure that an Open ticket cannot be Closed without investigation notes.
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Profile Edit & Security -->
+        <div class="col-lg-8">
+          
+          <!-- Personal Information Card -->
+          <div class="card card-custom mb-4">
+            <div class="card-header card-header-clean d-flex justify-content-between align-items-center">
+              <span class="fw-bold text-dark"><i class="bi bi-pencil-square text-primary me-2"></i>Complainant Contact Details (Mutators)</span>
+              <span class="code-pill">User.updateContactInfo()</span>
+            </div>
+            <div class="card-body p-4">
+              <form id="profileUpdateForm" novalidate>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label" for="profFirstName">First Name</label>
+                    <input type="text" class="form-control" id="profFirstName" value="Aarav" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="profLastName">Last Name</label>
+                    <input type="text" class="form-control" id="profLastName" value="Sharma" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="profEmail">Official Email (Getter only / Read-only)</label>
+                    <input type="email" class="form-control bg-light" id="profEmail" value="aarav.sharma@college.edu" readonly>
+                    <small class="text-muted fs-8">Immutable primary identifier</small>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="profPhone">Mobile Number (For Urgent SMS Alerts)</label>
+                    <input type="tel" class="form-control" id="profPhone" value="+91 98765 43210" required>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label" for="profDepartment">Affiliated Department / Hostel</label>
+                    <input type="text" class="form-control" id="profDepartment" value="Computer Science & Engineering (Hostel Block B)" required>
+                  </div>
+                  <div class="col-12 text-end mt-4">
+                    <button type="submit" class="btn btn-primary-custom" data-oop-event="ProfileUpdateSubmitted">
+                      <i class="bi bi-save"></i> Save Profile Details (Triggers ProfileUpdatedEvent)
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Security Credentials Card -->
+          <div class="card card-custom">
+            <div class="card-header card-header-clean d-flex justify-content-between align-items-center">
+              <span class="fw-bold text-dark"><i class="bi bi-key-fill text-warning me-2"></i>Security & Credentials (BCrypt Hash)</span>
+              <span class="code-pill">PasswordEncoder & Exceptions</span>
+            </div>
+            <div class="card-body p-4">
+              <form id="passwordUpdateForm" novalidate onsubmit="event.preventDefault(); showToast('PasswordChangedEvent', 'Password salt re-hashed and updated in database.', 'success');">
+                <div class="row g-3">
+                  <div class="col-md-4">
+                    <label class="form-label" for="currentPass">Current Password</label>
+                    <input type="password" class="form-control" id="currentPass" placeholder="••••••••" required>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label" for="newPass">New Password</label>
+                    <input type="password" class="form-control" id="newPass" placeholder="Min 6 characters" required minlength="6">
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label" for="confirmNewPass">Confirm New</label>
+                    <input type="password" class="form-control" id="confirmNewPass" placeholder="Re-type password" required minlength="6">
+                  </div>
+                  <div class="col-12 text-end">
+                    <button type="submit" class="btn btn-outline-warning text-dark fw-semibold" data-oop-event="PasswordChangeSubmitted">
+                      <i class="bi bi-shield-lock"></i> Update Password
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 9999;"></div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container text-center text-muted fs-8">
+      ResolveDesk Grievance & Complaint Resolution System &bull; Java OOP Mini Project Architecture
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="js/main.js"></script>
+  <script>
+    document.getElementById('profileUpdateForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fn = document.getElementById('profFirstName').value.trim();
+      const ln = document.getElementById('profLastName').value.trim();
+      document.getElementById('profileCardName').textContent = `${fn} ${ln}`;
+      showToast('ProfileUpdatedEvent', `Updated encapsulated entity state for ${fn} ${ln}.`, 'success');
+    });
+  </script>
+</body>
+</html>

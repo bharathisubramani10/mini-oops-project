@@ -1,0 +1,6 @@
+Ticket ID,Title,Category,Priority,Status,Complainant,Email,Department
+CMP-3001,Air conditioner cooling failure in Seminar Hall 1,Hostel & Infrastructure,High,Open,Dr. V. K. Murthy,v.murthy@college.edu,Electronics & Comm.
+CMP-3002,Online fee payment gateway timeout transaction debited,Administrative & Accounts,Critical,In Progress,Pooja Hegde,pooja.h@college.edu,Computer Science
+CMP-3003,Library digital journal IEEE portal IP authentication failure,IT & Network,Medium,Open,Ravi Teja,ravi.teja@college.edu,Information Technology
+CMP-3004,Chemistry Lab fume hood exhaust ventilation motor noisy,Laboratory Equipment,Low,Resolved,Anita Roy,anita.roy@college.edu,Chemical Engineering
+CMP-3005,Hostel Block C corridor emergency exit door latch jammed,Hostel & Infrastructure,Critical,Open,Karan Malhotra,karan.m@college.edu,Mechanical Engineering
